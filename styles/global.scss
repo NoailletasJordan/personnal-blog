@@ -8,6 +8,7 @@ body {
   font-size: 1rem;
   color: #111;
   background-color: #eef0f1;
+  padding-top: 28px;
 }
 
 *,
@@ -31,7 +32,7 @@ a:visited {
 // bleu: #0074de
 
 .container {
-  margin: 70px auto 3rem;
+  //margin: 70px auto 3rem;
 }
 
 .user-code {
@@ -66,9 +67,8 @@ header {
   background-color: white;
   position: absolute;
   top: 0;
-
   left: 0;
-  height: 55px;
+  height: 56px;
   display: flex;
   width: 100%;
   .header_container {

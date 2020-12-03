@@ -34,7 +34,7 @@ export default function Layout({ children }) {
         <div className="header_container">
           <Link href="/">
             <a>
-              <div className="bvn">Bienvenue</div>
+              <div className="bvn">Dev Blog</div>
             </a>
           </Link>
           <div className="ici">Ici on parle</div>{' '}

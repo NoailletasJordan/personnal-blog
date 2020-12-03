@@ -4,7 +4,10 @@ import Image from 'next/image'
 import styles from '../styles/articleMini.module.scss'
 import { truncate } from '../utility'
 
-export default ({ article }) => {
+export default function ArticleMini({ article, noTruncate }) {
+  const truncateNumber = noTruncate
+    ? { title: undefined, desc: undefined }
+    : { title: 180, desc: 80 }
   return (
     <Link
       href={`/posts/${encodeURIComponent(article.fields.slug)}`}
@@ -21,10 +24,10 @@ export default ({ article }) => {
             />
           </div>
           <div className={styles.aside__article__title}>
-            {truncate(article.fields.title, 180)}
+            {truncate(article.fields.title, truncateNumber.title)}
           </div>
           <div className={styles.aside__article__description}>
-            {truncate(article.fields.description, 80)}
+            {truncate(article.fields.description, truncateNumber.desc)}
           </div>
         </div>
       </a>
