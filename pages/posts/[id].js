@@ -4,8 +4,7 @@ const contentful = require('contentful')
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 import styles from '../../styles/posts.module.scss'
-import { truncate } from '../../utility'
-import Link from 'next/link'
+import ArticleMini from '../../components/articleMini'
 import Image from 'next/image'
 
 export default function Post(props) {
@@ -52,26 +51,7 @@ export default function Post(props) {
           </div>
 
           {props.aside.map((article) => (
-            <Link href={`/posts/${encodeURIComponent(article.fields.slug)}`}>
-              <a>
-                <div className={styles.aside__article}>
-                  <div className={styles.aside__article__thumbnail__wrapper}>
-                    <Image
-                      className={styles.aside__article__thumbnail}
-                      src={'http:' + article.fields.thumbnail.fields.file.url}
-                      alt="image d'article"
-                      layout="fill"
-                    />
-                  </div>
-                  <div className={styles.aside__article__title}>
-                    {truncate(article.fields.title, 180)}
-                  </div>
-                  <div className={styles.aside__article__description}>
-                    {truncate(article.fields.description, 80)}
-                  </div>
-                </div>
-              </a>
-            </Link>
+            <ArticleMini article={article} />
           ))}
         </aside>
       </div>
@@ -150,7 +130,17 @@ const options = {
       },
     }) =>
       `<div class="imbed-img"><Image src="${fields.file.url}" width="100%" alt="${fields.description}"/> </div>`,
-    [BLOCKS.EMBEDDED_ENTRY]: (node, next) =>
-      `<div class="user-code" innerHtml=${node.data.target.fields.content} </div>`,
+    [BLOCKS.EMBEDDED_ENTRY]: (node, next) => {
+      switch (node.data.target.fields.type) {
+        case 'code':
+          return `<div class="user-code" innerHtml=${node.data.target.fields.content} </div>`
+
+        case 'info':
+          return `<div class="user-info">${node.data.target.fields.content}</div>`
+
+        default:
+          return
+      }
+    },
   },
 }
