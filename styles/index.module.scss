@@ -1,6 +1,6 @@
 .container {
   max-width: 1170px;
-  margin: 0 auto;
+  margin: 0 auto 64px auto;
   @media screen and (max-width: 960px) {
     padding: 0 8px;
   }
@@ -9,7 +9,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 5px;
+  grid-gap: 8px;
 
   @media screen and (max-width: 960px) {
     grid-template-columns: 1fr 1fr;
@@ -36,44 +36,58 @@
 
 .banner {
   width: 100%;
-  height: 200px;
+  min-height: 200px;
+  padding: 64px 0;
   display: flex;
-  background-color: white;
   margin-bottom: 32px;
   overflow: hidden;
+  word-break: break-word;
 
   @media screen and (max-width: 600px) {
     flex-direction: column;
   }
 
   .banner__left {
-    width: 40%;
-    height: 100%;
-    display: flex;
-    align-items: center;
+    padding-left: 16px;
     @media screen and (max-width: 600px) {
-      display: none;
+      padding-left: 0;
+      margin-bottom: 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .banner__left__bonjour {
+      font-size: 36px;
+      margin-bottom: 32px;
+    }
+    .banner__left__description {
+      font-size: 32pt;
+      font-weight: normal;
+      color: rgb(112, 112, 112);
+      margin-bottom: 40px;
+      line-height: 40px;
+      @media screen and (max-width: 960px) {
+        font-size: 38px;
+      }
+      @media screen and (max-width: 600px) {
+        font-size: 32px;
+        padding: 0 16px;
+      }
+    }
+
+    .banner__left__button {
+      cursor: pointer;
+      border-radius: 3px;
+      padding: 0.7rem 2.5rem;
+      border: none;
+      appearance: none;
+      user-select: none;
+      color: rgb(255, 255, 255);
+      background: #0074de;
     }
   }
 
   .banner__right {
-    background-color: black;
-    flex: 1;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    border-bottom-left-radius: 500px;
-    border-top-left-radius: 500px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    padding: 0 48px;
-    font-size: 18px;
-    @media screen and (max-width: 600px) {
-      width: 100%;
-      border-radius: 3px;
-      margin-top: 24px;
-      font-size: 15px;
-    }
+    flex-grow: 1;
   }
 }

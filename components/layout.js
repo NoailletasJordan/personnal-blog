@@ -2,19 +2,14 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 const name = 'Travis Skrrrt'
-export const siteTitle = 'Next.js Sample Website'
+export const siteTitle = 'Blog web développement'
 
 export default function Layout({ children }) {
-  var ReactRotatingText = require('react-rotating-text')
-
   return (
     <div className="container">
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
+        <meta name="description" content="Personnal blog" />
         <meta
           property="og:image"
           content={`https://og-image.now.sh/${encodeURI(
@@ -34,29 +29,14 @@ export default function Layout({ children }) {
         <div className="header_container">
           <Link href="/">
             <a>
-              <div className="bvn">Dev Blog</div>
+              <div className="logo">Dev Blog</div>
             </a>
           </Link>
-          <div className="ici">Ici on parle</div>{' '}
-          <ReactRotatingText
-            className="rotating__text"
-            items={[
-              'web',
-              'javascript',
-              'react',
-              'server-side rendering',
-              'headless-cms',
-              'backend',
-              'developpement',
-              'css',
-              'databases',
-              'nextjs',
-              'jamstack',
-              'optimisation',
-              'nodejs',
-              'de code en général',
-            ]}
-          />
+          <nav className="header_nav">
+            <div className="header_navitem">
+              <a href="mailto:j.noailletas@gmail.com">Contact</a>
+            </div>
+          </nav>
         </div>
       </header>
       <main>{children}</main>

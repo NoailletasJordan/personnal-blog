@@ -45,13 +45,12 @@ export default function Post(props) {
               <div className={styles.author__name}>Jordan</div>
             </a>
             <div className={styles.author__description}>
-              Développeur d'applications web 👨‍💻: Javascript (es6+), react,
-              node.js
+              Développeur fullstack JS 👨‍💻: Javascript (es6+), react, node.js
             </div>
           </div>
 
           {props.aside.map((article) => (
-            <ArticleMini article={article} />
+            <ArticleMini article={article} key={Math.random()} />
           ))}
         </aside>
       </div>

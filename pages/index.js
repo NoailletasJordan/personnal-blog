@@ -2,8 +2,9 @@ import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import styles from '../styles/index.module.scss'
 import ArticleMini from '../components/articleMini'
-import { BLOCKS } from '@contentful/rich-text-types'
+import WebDevSvg from '../components/webdevSvg'
 const contentful = require('contentful')
+const ReactRotatingText = require('react-rotating-text')
 
 export default function Home({ articles }) {
   return (
@@ -15,22 +16,39 @@ export default function Home({ articles }) {
       <div className={styles.container}>
         <div className={styles.banner}>
           <div className={styles.banner__left}>
-            <img
-              className={styles.bg__svg}
-              width="100%"
-              src="/code_thinking.png"
-            ></img>
+            <div className={styles.banner__left__bonjour}>Bonjour 👋</div>
+            <div className={styles.banner__left__description}>
+              Je suis Jordan, ici je parle <br /> de{' '}
+              <ReactRotatingText
+                className="rotating__text"
+                items={[
+                  'javascript',
+                  'react',
+                  'headless-cms',
+                  'backend',
+                  'développement',
+                  'css',
+                  'databases',
+                  'nextjs',
+                  'jamstack',
+                  'nodejs',
+                ]}
+              />
+            </div>
+            <a
+              href="https://jordannoailletas.com"
+              className={styles.banner__left__button}
+            >
+              Présentation
+            </a>
           </div>
           <div className={styles.banner__right}>
-            Bonjour 👋, moi c'est Jordan, c'est ici je que partage des trucs en
-            rapport avec le web
+            <WebDevSvg />
           </div>
         </div>
+
         <div className={styles.grid}>
-          <div className={styles.article__big}>
-            <ArticleMini article={articles[0]} noTruncate={true} />
-          </div>
-          {articles.slice(1).map((article) => (
+          {articles.map((article) => (
             <ArticleMini article={article} key={Math.random()} />
           ))}
         </div>
@@ -48,37 +66,20 @@ export async function getStaticProps({ params }) {
   })
 
   try {
+    // Fetch blog posts
     let { items } = await client.getEntries({ content_type: 'blogPost' })
-    props.articles = [...items]
+
+    // Attach and sort articles to props
+    props.articles = [...items].sort(
+      (x, y) =>
+        new Date(y.fields.publishedDate) - new Date(x.fields.publishedDate)
+    )
   } catch (error) {
     console.log(error)
   }
 
+  // Send props
   return {
     props,
   }
-}
-
-// Setup Images from contentful
-const options = {
-  renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: ({
-      data: {
-        target: { fields },
-      },
-    }) =>
-      `<div class="imbed-img"><Image src="${fields.file.url}" width="100%" alt="${fields.description}"/> </div>`,
-    [BLOCKS.EMBEDDED_ENTRY]: (node, next) => {
-      switch (node.data.target.fields.type) {
-        case 'code':
-          return `<div class="user-code" innerHtml=${node.data.target.fields.content} </div>`
-
-        case 'info':
-          return `<div class="user-info">${node.data.target.fields.content}</div>`
-
-        default:
-          return
-      }
-    },
-  },
 }

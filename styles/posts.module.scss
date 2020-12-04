@@ -1,5 +1,5 @@
 .blog__wrapper {
-  margin: 0 auto;
+  margin: 64px auto;
   display: flex;
   max-width: 1170px;
 
@@ -70,6 +70,13 @@
           color: #0074de;
         }
 
+        code {
+          background-color: palegreen;
+          border-radius: 3px;
+          font-size: inherit;
+          font-family: inherit;
+        }
+
         .imbed-img {
           margin: 20px 64px;
           img {
@@ -97,6 +104,11 @@
     width: 500px;
     margin-left: 16px;
 
+    & > *,
+    div[class*='articleMini'] {
+      margin-bottom: 16px;
+    }
+
     @media screen and (max-width: 1280px) {
       width: 400px;
     }
@@ -112,7 +124,8 @@
       padding: 8px;
       position: relative;
       overflow: hidden;
-      margin-bottom: 16px;
+
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
       .blacktop {
         position: absolute;
