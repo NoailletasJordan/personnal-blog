@@ -46,7 +46,7 @@
       .blog__title {
         font-size: 35px;
         margin-top: 20px;
-        line-height: 33px;
+        line-height: 40px;
 
         @media screen and (max-width: 600px) {
           font-size: 30px;
@@ -61,6 +61,7 @@
       }
 
       .blog__content {
+        line-height: 28px;
         b {
           color: #d400ff;
           font-weight: 400;
@@ -68,13 +69,6 @@
 
         a {
           color: #0074de;
-        }
-
-        code {
-          background-color: palegreen;
-          border-radius: 3px;
-          font-size: inherit;
-          font-family: inherit;
         }
 
         .imbed-img {

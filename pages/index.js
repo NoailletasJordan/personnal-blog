@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
+import Layout from '../components/layout'
 import styles from '../styles/index.module.scss'
 import ArticleMini from '../components/articleMini'
 import WebDevSvg from '../components/webdevSvg'
@@ -10,7 +10,7 @@ export default function Home({ articles }) {
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>
+        <title>Blog web développement</title>
       </Head>
 
       <div className={styles.container}>

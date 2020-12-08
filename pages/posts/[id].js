@@ -12,6 +12,19 @@ export default function Post(props) {
     <Layout>
       <Head>
         <title>{props.title}</title>
+        <meta name="description" content={props.description} />
+        <meta property="og:title" content={props.title} key="ogtitle" />
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:description"
+          content={props.description}
+          key="ogdesc"
+        />
+        <meta
+          property="og:image"
+          content={'http:' + props.thumbnail.url}
+          key="ogimage"
+        />
       </Head>
       <div className={styles.blog__wrapper}>
         <article className={styles.blog__article__wrapper}>
@@ -45,7 +58,7 @@ export default function Post(props) {
               <div className={styles.author__name}>Jordan</div>
             </a>
             <div className={styles.author__description}>
-              Développeur fullstack JS 👨‍💻: Javascript (es6+), react, node.js
+              Développeur fullstack Javascript et JAMstack enthousiast 👨‍💻
             </div>
           </div>
 
