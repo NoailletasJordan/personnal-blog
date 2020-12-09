@@ -63,7 +63,7 @@ code {
 .imbed-img {
   img {
     border-radius: 3px;
-    padding: 0 48px;
+    padding: 0 16px;
     @media screen and (max-width: 600px) {
       padding: 0;
     }
@@ -128,4 +128,6 @@ header {
 
 .rotating__text {
   color: #d400ff !important;
+  min-width: 210px;
+  display: inline-block;
 }

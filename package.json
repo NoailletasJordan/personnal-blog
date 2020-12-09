@@ -9,15 +9,11 @@
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^14.1.2",
-
     "contentful": "^7.15.0",
-
     "next": "^10.0.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-rotating-text": "^1.4.1",
-    "react-typewriter": "^0.4.1",
-
     "sass": "^1.29.0",
     "typewriter-effect": "^2.17.0"
   }

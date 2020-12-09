@@ -18,7 +18,7 @@ export default function Home({ articles }) {
           <div className={styles.banner__left}>
             <div className={styles.banner__left__bonjour}>Bonjour 👋</div>
             <div className={styles.banner__left__description}>
-              Je suis Jordan, ici je parle <br /> de{' '}
+              Je suis Jordan, ici je parle de{' '}
               <ReactRotatingText
                 className="rotating__text"
                 items={[

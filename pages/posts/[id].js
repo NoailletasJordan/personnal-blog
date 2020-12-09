@@ -6,6 +6,7 @@ import { BLOCKS } from '@contentful/rich-text-types'
 import styles from '../../styles/posts.module.scss'
 import ArticleMini from '../../components/articleMini'
 import Image from 'next/image'
+import { convertDate } from '../../utility'
 
 export default function Post(props) {
   return (
@@ -32,12 +33,13 @@ export default function Post(props) {
             <Image
               className={styles.blog__thumbnail}
               src={'http:' + props.thumbnail.url}
-              alt={props.thumbnail.description}
+              alt="thumbnail"
               layout="fill"
             />
           </div>
           <div className={styles.blog__body}>
             <h1 className={styles.blog__title}>{props.title}</h1>
+            <div className={styles.blog__date}>{convertDate(props.date)}</div>
             <h2 className={styles.blog__description}>{props.description}</h2>
             <div
               className={styles.blog__content}
@@ -119,9 +121,6 @@ export async function getStaticProps({ params }) {
     props.description = entry.fields.description
     props.thumbnail = {
       url: entry.fields.thumbnail.fields.file.url,
-      alt: entry.fields.thumbnail.fields.file.description
-        ? entry.fields.thumbnail.fields.file.description
-        : null,
     }
     props.contentHtml = documentToHtmlString(entry.fields.body, options)
   } catch (error) {
@@ -141,7 +140,7 @@ const options = {
         target: { fields },
       },
     }) =>
-      `<div class="imbed-img"><Image src="${fields.file.url}" width="100%" alt="${fields.description}"/> </div>`,
+      `<div class="imbed-img"><Image src="${fields.file.url}" width="100%" alt="${fields.file.fileName}"/> </div>`,
     [BLOCKS.EMBEDDED_ENTRY]: (node, next) => {
       switch (node.data.target.fields.type) {
         case 'code':
