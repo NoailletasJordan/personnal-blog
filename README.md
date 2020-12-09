@@ -12,6 +12,10 @@ SEO, images optimisées par défaut, et assets créés au build time.
 
 ![Screenshot_2](https://user-images.githubusercontent.com/48062996/101619175-30a76b00-3a13-11eb-9c36-13bb7f0b6c01.jpg)
 
+### Performance Lighthouse
+
+![Screenshot_4](https://user-images.githubusercontent.com/48062996/101624148-d1992480-3a19-11eb-87aa-258b638df074.jpg)
+
 ## Installation
 
 ```bash
