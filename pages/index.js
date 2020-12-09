@@ -10,7 +10,11 @@ export default function Home({ articles }) {
   return (
     <Layout home>
       <Head>
-        <title>Blog web développement</title>
+        <title>Blog développement web</title>
+        <meta
+          name="description"
+          content="Blog JAMstack développé avec Nextjs et Contentful"
+        />
       </Head>
 
       <div className={styles.container}>
