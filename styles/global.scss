@@ -72,9 +72,10 @@ code {
 
 header {
   position: absolute;
+  padding-top: 0px;
   top: 0;
   left: 0;
-  height: 56px;
+  height: 80px;
   display: flex;
   width: 100%;
   .header_container {

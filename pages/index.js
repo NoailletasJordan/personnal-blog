@@ -31,7 +31,7 @@ export default function Home({ articles }) {
                   'headless-cms',
                   'backend',
                   'développement',
-                  'css',
+                  'scss',
                   'databases',
                   'nextjs',
                   'jamstack',
