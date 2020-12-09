@@ -19,8 +19,9 @@ SEO, images optimisées par défaut, et assets créés au build time.
 ## Installation
 
 ```bash
-git clone git@github.com:NoailletasJordan/personnal-blog.git
+git clone https://github.com/NoailletasJordan/personnal-blog.git
 npm install
+npm run dev
 ```
 
 Créez un fichier **.env.local** et entrez vos variables Contentful
