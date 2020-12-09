@@ -4,7 +4,8 @@ const webDevSvg = (props) => {
       id="ade8c9af-7e2e-4eda-b5c8-b06129257226"
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
-      width="auto"
+      //width="auto"
+      lenght="auto"
       viewBox="-265 -14 1629 770"
     >
       <title>web_developer</title>
