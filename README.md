@@ -18,15 +18,21 @@ SEO, images optimisées par défaut, et assets créés au build time.
 
 ## Installation
 
+1.  Clonez ce repository et installez les dépendances
+
 ```bash
-git clone https://github.com/NoailletasJordan/personnal-blog.git
-npm install
-npm run dev
+$ git clone https://github.com/NoailletasJordan/personnal-blog.git
+$ cd personnal-blog
+$ npm install
 ```
 
-Créez un fichier **.env.local** et entrez vos variables Contentful
+1.  Créez un fichier **.env.local** et entrez vos variables Contentful
 
 ```
 CONTENTFUL_SPACE=<votre-variable>
 CONTENTFUL_ACCESS_TOKEN=<votre-variable>
 ```
+
+1.  Démarrez le serveur local
+
+    $ npm run dev
