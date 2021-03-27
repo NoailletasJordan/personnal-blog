@@ -1,8 +1,8 @@
 # Next-Blog
 
-Un blog personnel suivant l'architecture **JAMstack**, développé avec **Nextjs** et **Contentful** en headless CMS.
+Blog suivant l'architecture **JAMstack**, développé avec **Nextjs** et **Contentful**.
 
-SEO, images optimisées par défaut, et assets créés au build time.
+SEO, images optimisées automatiquement, génération statique des assets.
 
 ### Rapport Lighthouse
 
@@ -26,13 +26,15 @@ $ cd personnal-blog
 $ npm install
 ```
 
-1.  Créez un fichier **.env.local** et entrez vos variables Contentful
+2.  Créez un fichier **.env.local** et entrez vos variables Contentful
 
 ```
 CONTENTFUL_SPACE=<votre-variable>
 CONTENTFUL_ACCESS_TOKEN=<votre-variable>
 ```
 
-1.  Démarrez le serveur local
+3.  Démarrez le serveur local
 
-    $ npm run dev
+```
+$ npm run dev
+```
