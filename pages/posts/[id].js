@@ -1,12 +1,12 @@
-import Layout from '../../components/layout'
-import Head from 'next/head'
-const contentful = require('contentful')
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
-import styles from '../../styles/posts.module.scss'
-import ArticleMini from '../../components/articleMini'
+import Head from 'next/head'
 import Image from 'next/image'
+import ArticleMini from '../../components/articleMini'
+import Layout from '../../components/layout'
+import styles from '../../styles/posts.module.scss'
 import { convertDate } from '../../utility'
+const contentful = require('contentful')
 
 export default function Post(props) {
   return (
@@ -85,9 +85,10 @@ export async function getStaticPaths() {
   try {
     // Query all posts and setup Paths Array
     const entries = await client.getEntries({ content_type: 'blogPost' })
+
     paths = entries.items.map((item) => ({
       params: {
-        id: encodeURIComponent(item.fields.slug),
+        id: item.fields.slug,
       },
     }))
   } catch (error) {

@@ -1,6 +1,7 @@
 # Next-Blog
 
-Blog suivant l'architecture **JAMstack**, développé avec **Nextjs** et **Contentful**.
+Blog suivant l'architecture **JAMstack**, développé avec **Nextjs** et
+**Contentful**.
 
 SEO, images optimisées automatiquement, génération statique des assets.
 

@@ -14,9 +14,7 @@ export default function Layout({ children }) {
       <header>
         <div className="header_container">
           <Link href="/">
-            <a>
-              <div className="logo">Dev Blog</div>
-            </a>
+            <div className="logo">Dev Blog</div>
           </Link>
           <nav className="header_nav">
             <div className="header_navitem">
