@@ -1,0 +1,38 @@
+.outer {
+  border-radius: 5px;
+  padding: 1rem;
+  line-height: 24px;
+
+  &:hover {
+    .header_container__button {
+      opacity: 0.8;
+      transform: translateY(0px);
+    }
+  }
+
+  .header_container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0.5rem;
+
+    &__dot {
+      border-radius: 50%;
+      width: 12px;
+      height: 12px;
+    }
+
+    &__button {
+      all: unset;
+      font-size: 80%;
+      opacity: 0;
+      margin-left: auto;
+      border: 1px solid white;
+      padding: 0.13rem 0.75rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transform: translateY(-7px);
+      transition: transform ease-in 100ms, opacity ease 200ms;
+    }
+  }
+}

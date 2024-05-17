@@ -7,7 +7,7 @@ export function convertDate(timestampString) {
   const options = {
     year: 'numeric',
     month: 'long',
-    day: 'numeric',
   }
-  return date.toLocaleDateString('fr-FR', options).replace('à', '-')
+  const formatted = date.toLocaleDateString('fr-FR', options).replace('à', '-')
+  return formatted[0].toUpperCase() + formatted.slice(1)
 }

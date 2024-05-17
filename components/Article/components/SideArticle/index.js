@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import styles from '../styles/articleMini.module.scss'
-import { truncate } from '../utility'
+import { truncate } from '../../../../utility'
+import styles from './side-article.module.scss'
 
 export default function ArticleMini({ article, noTruncate }) {
   const truncateNumber = noTruncate
@@ -16,7 +16,7 @@ export default function ArticleMini({ article, noTruncate }) {
             className={styles.aside__article__thumbnail}
             src={'http:' + article.fields.thumbnail.fields.file.url}
             alt="image d'article"
-            layout="fill"
+            fill
           />
         </div>
         <div className={styles.aside__article__title}>

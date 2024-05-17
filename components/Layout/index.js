@@ -6,10 +6,6 @@ export default function Layout({ children }) {
     <div className="container">
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-          rel="stylesheet"
-        ></link>
       </Head>
       <header>
         <div className="header_container">

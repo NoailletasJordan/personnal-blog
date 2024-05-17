@@ -27,11 +27,12 @@ $ cd personnal-blog
 $ npm install
 ```
 
-2.  Créez un fichier **.env.local** et entrez vos variables Contentful
+2.  Créez un fichier **.env** et entrez vos variables Contentful
 
 ```
 CONTENTFUL_SPACE=<votre-variable>
-CONTENTFUL_ACCESS_TOKEN=<votre-variable>
+CONTENTFUL_ACCESS_TOKEN=<votre-variable-articles-publiés>
+CONTENTFUL_DRAFT_PREVIEW_TOKEN=<votre-variable-article-draft>
 ```
 
 3.  Démarrez le serveur local
@@ -39,3 +40,5 @@ CONTENTFUL_ACCESS_TOKEN=<votre-variable>
 ```
 $ npm run dev
 ```
+
+_Les pages en "Draft" sont accessibles à l'adresse: /drafts/id-de-la-page_

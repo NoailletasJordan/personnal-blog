@@ -1,7 +1,6 @@
 import Head from 'next/head'
-import ArticleMini from '../components/articleMini'
-import Layout from '../components/layout'
-import WebDevSvg from '../components/webdevSvg'
+import SideArticle from '../components/Article/components/SideArticle'
+import Layout from '../components/Layout'
 import styles from '../styles/index.module.scss'
 const contentful = require('contentful')
 const ReactRotatingText = require('react-rotating-text')
@@ -59,13 +58,13 @@ export default function Home({ articles }) {
             </a>
           </div>
           <div className={styles.banner__right}>
-            <WebDevSvg />
+            <img src={'homepage-hero.svg'} alt="My SVG" />
           </div>
         </div>
 
         <div className={styles.grid}>
           {articles.map((article) => (
-            <ArticleMini article={article} key={Math.random()} />
+            <SideArticle article={article} key={Math.random()} />
           ))}
         </div>
       </div>
