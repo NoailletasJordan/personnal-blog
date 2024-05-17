@@ -10,8 +10,18 @@ export default function DRAFT(props) {
       <Head>
         <title>{props.title}</title>
         <meta name="description" content={props.description} />
-        {/* PREVENT SEO & REFERENCING */}
-        <meta name="robots" content="noindex, nofollow" />
+        <meta property="og:title" content={props.title} key="ogtitle" />
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:description"
+          content={props.description}
+          key="ogdesc"
+        />
+        <meta
+          property="og:image"
+          content={'http:' + props.thumbnail.url}
+          key="ogimage"
+        />
       </Head>
       <Article {...props} />
     </Layout>
