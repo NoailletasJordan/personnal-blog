@@ -1,10 +1,9 @@
 import Head from 'next/head'
-import Article from '../../components/Article'
-import Layout from '../../components/Layout'
-
+import Article from '../../../components/Article'
+import Layout from '../../../components/Layout'
 const contentful = require('contentful')
 
-export default function DRAFT(props) {
+export default function Post(props) {
   return (
     <Layout>
       <Head>
@@ -28,7 +27,35 @@ export default function DRAFT(props) {
   )
 }
 
-export async function getServerSideProps({ params }) {
+export async function getStaticPaths() {
+  let paths
+
+  // Log into Contenful SDK
+  const client = contentful.createClient({
+    space: process.env.CONTENTFUL_SPACE,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+  })
+
+  try {
+    // Query all posts and setup Paths Array
+    const entries = await client.getEntries({ content_type: 'blogPost' })
+
+    paths = entries.items.map((item) => ({
+      params: {
+        id: item.fields.slug,
+      },
+    }))
+  } catch (error) {
+    console.log(error)
+  }
+
+  return {
+    paths,
+    fallback: false,
+  }
+}
+
+export async function getStaticProps({ params }) {
   const props = {}
   let entry
 

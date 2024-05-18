@@ -1,6 +1,7 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from 'next/head'
-import Article from '../../components/Article'
-import Layout from '../../components/Layout'
+import Article from '../../../components/Article'
+import Layout from '../../../components/Layout'
 const contentful = require('contentful')
 
 export default function Post(props) {
@@ -33,21 +34,30 @@ export async function getStaticPaths() {
   // Log into Contenful SDK
   const client = contentful.createClient({
     space: process.env.CONTENTFUL_SPACE,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+    accessToken: process.env.CONTENTFUL_DRAFT_PREVIEW_TOKEN,
+    host: 'preview.contentful.com',
   })
+
+  const locales = ['frFR', 'en-US']
 
   try {
     // Query all posts and setup Paths Array
     const entries = await client.getEntries({ content_type: 'blogPost' })
 
-    paths = entries.items.map((item) => ({
-      params: {
-        id: item.fields.slug,
-      },
-    }))
+    paths = locales.flatMap((locale) =>
+      entries.items.map((item) => ({
+        params: {
+          id: item.fields.slug,
+          locale,
+        },
+      })),
+    )
   } catch (error) {
     console.log(error)
   }
+
+  /** Temp */
+  console.log({ paths: JSON.stringify(paths) })
 
   return {
     paths,
@@ -56,8 +66,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const props = {}
+  let props = {}
   let entry
+
+  /** Temp */
+  console.log({ params })
 
   // Log into Contenful SDK
   const client = contentful.createClient({
@@ -68,7 +81,10 @@ export async function getStaticProps({ params }) {
 
   try {
     // Query specific post
-    const entries = await client.getEntries({ content_type: 'blogPost' })
+    const entries = await client.getEntries({
+      // locale: 'fr-FR', //params.locale,
+      content_type: 'blogPost',
+    })
     props.aside = entries.items.filter((elt) => elt.fields.slug !== params.id)
     entry = entries.items.find((elt) => elt.fields.slug === params.id)
     // Setup props to send
@@ -82,6 +98,13 @@ export async function getStaticProps({ params }) {
   } catch (error) {
     console.log(error)
   }
+
+  /** Temp */
+  console.log('waiting')
+  // /** Temp */
+  console.log({
+    ...(await serverSideTranslations('en-US', ['common'])),
+  })
 
   return {
     props,
