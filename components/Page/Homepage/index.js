@@ -1,11 +1,9 @@
 import Head from 'next/head'
-import SideArticle from '../components/Article/components/SideArticle'
-import Layout from '../components/Layout'
-import styles from '../styles/index.module.scss'
-const contentful = require('contentful')
+import Layout from '../../../components/Layout'
+import styles from '../../../styles/index.module.scss'
 const ReactRotatingText = require('react-rotating-text')
-
-export default function Home({ articles }) {
+// temp delete
+export default function Home({ articles, test }) {
   return (
     <Layout home>
       <Head>
@@ -63,38 +61,11 @@ export default function Home({ articles }) {
         </div>
 
         <div className={styles.grid}>
-          {articles.map((article) => (
+          {/* {articles.map((article) => (
             <SideArticle article={article} key={Math.random()} />
-          ))}
+          ))} */}
         </div>
       </div>
     </Layout>
   )
-}
-
-export async function getStaticProps({ params }) {
-  let props = {}
-  // Log into Contenful SDK
-  const client = contentful.createClient({
-    space: process.env.CONTENTFUL_SPACE,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-  })
-
-  try {
-    // Fetch blog posts
-    let { items } = await client.getEntries({ content_type: 'blogPost' })
-
-    // Attach and sort articles to props
-    props.articles = [...items].sort(
-      (x, y) =>
-        new Date(y.fields.publishedDate) - new Date(x.fields.publishedDate),
-    )
-  } catch (error) {
-    console.log(error)
-  }
-
-  // Send props
-  return {
-    props,
-  }
 }

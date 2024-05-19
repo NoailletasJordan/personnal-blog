@@ -1,42 +1,25 @@
-import Head from 'next/head'
 import Article from '../../../components/Article'
-import Layout from '../../../components/Layout'
-
 const contentful = require('contentful')
 
-export default function DRAFT(props) {
-  /** Temp */
-  console.log({ props })
-  return (
-    <Layout>
-      <Head>
-        <title>{props.title}</title>
-        <meta name="description" content={props.description} />
-        <meta property="og:title" content={props.title} key="ogtitle" />
-        <meta property="og:type" content="article" />
-        <meta
-          property="og:description"
-          content={props.description}
-          key="ogdesc"
-        />
-        <meta
-          property="og:image"
-          content={'http:' + props.thumbnail.url}
-          key="ogimage"
-        />
-      </Head>
-      <Article {...props} />
-    </Layout>
-  )
+export default function Draft(props) {
+  return <Article {...props} />
 }
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps(context) {
+  const { req, params } = context
+  const currentUrl = req.url
+  const locale = currentUrl.split('/')[1]
+  const slug = currentUrl[currentUrl.length - 1]
+  const otherLanguage = locale === 'fr' ? 'en' : 'fr'
+
   const props = {}
+  props.locale = locale
   let entry
 
   // Log into Contenful SDK
   const client = contentful.createClient({
     space: process.env.CONTENTFUL_SPACE,
+    // Setup for Draft acticles
     accessToken: process.env.CONTENTFUL_DRAFT_PREVIEW_TOKEN,
     host: 'preview.contentful.com',
   })
@@ -45,7 +28,7 @@ export async function getServerSideProps({ params }) {
     // Query specific post
     const entries = await client.getEntries({
       content_type: 'blogPost',
-      locale: 'en-US',
+      locale: locale,
     })
     props.aside = entries.items.filter((elt) => elt.fields.slug !== params.id)
     entry = entries.items.find((elt) => elt.fields.slug === params.id)
@@ -57,6 +40,9 @@ export async function getServerSideProps({ params }) {
       url: entry.fields.thumbnail.fields.file.url,
     }
     props.content = entry.fields.body
+
+    const otherLanguage = props.locale === 'fr' ? 'en' : 'fr'
+    props.switchLanguageLink = `/${otherLanguage}/draft/${entry.fields.slug}`
   } catch (error) {
     console.log(error)
   }
