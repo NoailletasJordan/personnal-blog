@@ -1,15 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { truncate } from '../../../../utility'
 import styles from './side-article.module.scss'
 
-export default function ArticleMini({ article, noTruncate }) {
+export default function ArticleMini({ article, noTruncate, url }) {
   const truncateNumber = noTruncate
     ? { title: undefined, desc: undefined }
     : { title: 180, desc: 80 }
   return (
-    <Link href={`/posts/${article.fields.slug}`} key={article.fields.title}>
+    <Link href={url || ''} key={article.fields.title}>
       <div className={styles.aside__article}>
         <div className={styles.aside__article__thumbnail__wrapper}>
           <Image
@@ -28,4 +27,8 @@ export default function ArticleMini({ article, noTruncate }) {
       </div>
     </Link>
   )
+}
+
+function truncate(source, size) {
+  return source.length > size ? source.slice(0, size - 1) + '…' : source
 }

@@ -33,7 +33,7 @@ const CodeBlock = ({ text, codeLanguage }) => {
   return (
     <Highlight
       theme={themes.nightOwl}
-      code={text}
+      code={text.trim()}
       language={codeLanguage || 'tsx'}
     >
       {({ style, tokens, getLineProps, getTokenProps }) => (

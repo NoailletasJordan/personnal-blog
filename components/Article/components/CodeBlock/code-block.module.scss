@@ -1,7 +1,9 @@
 .outer {
   border-radius: 5px;
   padding: 1rem;
+  padding-bottom: 1.2rem;
   line-height: 24px;
+  font-size: 100%;
 
   &:hover {
     .header_container__button {

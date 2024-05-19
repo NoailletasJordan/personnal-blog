@@ -41,4 +41,7 @@ CONTENTFUL_DRAFT_PREVIEW_TOKEN=<votre-variable-article-draft>
 $ npm run dev
 ```
 
-_Les pages en "Draft" sont accessibles à l'adresse: /drafts/id-de-la-page_
+Les pages publiées sont en SSG
+
+Les pages draft sont accessibles à l'adresse: [fr|en]/draft/id-de-la-page et
+rendues en SSR pour éviter le besoin d'un redéploiement

@@ -11,9 +11,11 @@
     "@contentful/rich-text-react-renderer": "^15.19.6",
     "contentful": "^10.11.0",
     "next": "^14.2.3",
+    "next-i18next": "^15.3.0",
     "prism-react-renderer": "^2.3.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "react-i18next": "^14.1.1",
     "react-rotating-text": "^1.4.1",
     "sass": "^1.77.2",
     "typewriter-effect": "^2.21.0"
