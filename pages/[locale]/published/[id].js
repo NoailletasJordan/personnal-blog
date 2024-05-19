@@ -15,7 +15,7 @@ const clientData = {
 export async function getStaticPaths() {
   // needs to match translation object key, and contentful locales
   const locales = ['fr', 'en']
-  let paths
+  let paths = []
 
   // Log into Contenful SDK
   const client = contentful.createClient(clientData)
