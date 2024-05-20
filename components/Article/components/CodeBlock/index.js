@@ -32,7 +32,7 @@ const CodeBlock = ({ text, codeLanguage }) => {
 
   return (
     <Highlight
-      theme={themes.nightOwl}
+      theme={themes.vsDark}
       code={text.trim()}
       language={codeLanguage || 'tsx'}
     >
@@ -70,7 +70,11 @@ const CodeBlock = ({ text, codeLanguage }) => {
             </button>
           </div>
           {tokens.map((line, i) => (
-            <div key={i} {...getLineProps({ line })}>
+            <div
+              key={i}
+              {...getLineProps({ line })}
+              style={{ overflow: 'auto' }}
+            >
               {line.map((token, key) => (
                 <span key={key} {...getTokenProps({ token })} />
               ))}

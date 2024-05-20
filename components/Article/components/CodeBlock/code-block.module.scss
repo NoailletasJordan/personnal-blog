@@ -3,7 +3,7 @@
   padding: 1rem;
   padding-bottom: 1.2rem;
   line-height: 24px;
-  font-size: 100%;
+  font-size: 0.9rem;
 
   &:hover {
     .header_container__button {
@@ -26,14 +26,14 @@
 
     &__button {
       all: unset;
-      font-size: 80%;
+      font-size: 70%;
       opacity: 0;
       margin-left: auto;
       border: 1px solid white;
       padding: 0.13rem 0.75rem;
       cursor: pointer;
       border-radius: 4px;
-      transform: translateY(-7px);
+      transform: translateY(-4px);
       transition: transform ease-in 100ms, opacity ease 200ms;
     }
   }

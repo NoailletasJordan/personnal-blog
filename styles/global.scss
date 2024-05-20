@@ -4,8 +4,9 @@ body {
   font-family: Roboto, sans-serif;
   line-height: 26px;
   font-weight: 400;
-  font-size: 17px;
-  color: #111;
+  font-size: 1.125rem;
+  color: rgb(23, 23, 23);
+
   background-color: #eef0f1;
   padding-top: 56px;
   min-height: 100vh;
@@ -28,7 +29,6 @@ a:visited {
 // background : #0a192f
 // gris : #757575
 // vert: #64ffda
-// rose: #d400ff
 // bleu: #0074de
 
 header {
@@ -102,7 +102,7 @@ header {
 }
 
 .rotating__text {
-  color: #d400ff !important;
+  color: #3f3d56 !important;
   min-width: 210px;
   display: inline-block;
 }
