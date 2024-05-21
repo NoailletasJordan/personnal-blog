@@ -24,7 +24,8 @@
   }
 
   .aside__article__title {
-    padding: 8px;
+    font-weight: 700;
+    margin: 8px;
     font-size: 20px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -42,5 +43,9 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    &:hover {
+      -webkit-line-clamp: unset;
+    }
   }
 }
