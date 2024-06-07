@@ -9,7 +9,7 @@
     box-sizing: border-box;
   }
 
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 800px) {
     display: block;
   }
 
@@ -41,7 +41,7 @@
     .blog__body {
       padding: 20px 64px;
 
-      @media screen and (max-width: 960px) {
+      @media screen and (max-width: 800px) {
         padding: 20px 32px;
       }
 
@@ -132,9 +132,23 @@
       width: 400px;
     }
 
-    @media screen and (max-width: 960px) {
+    @media screen and (max-width: 800px) {
       margin: 0;
       width: auto;
+    }
+
+    &__article {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+
+      @media screen and (max-width: 800px) {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @media screen and (max-width: 600px) {
+        grid-template-columns: 1fr;
+      }
     }
 
     .author {

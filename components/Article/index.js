@@ -10,6 +10,7 @@ import SideArticle from './components/SideArticle'
 
 export default function Article(props) {
   const t = translation[props.locale] || {}
+
   return (
     <Layout locale={props.locale} switchLanguageLink={props.switchLanguageLink}>
       <Head>
@@ -67,13 +68,15 @@ export default function Article(props) {
               ⚡TypeScript | 🌐 Node.js | 🚀 Go
             </div>
           </div>
-          {props.aside.map((article) => (
-            <SideArticle
-              article={article}
-              key={Math.random()}
-              url={`/${props.locale}/published/${article.fields.slug}`}
-            />
-          ))}
+          <div className={styles.blog__aside__article}>
+            {props.aside.map((article) => (
+              <SideArticle
+                article={article}
+                key={Math.random()}
+                url={`/${props.locale}/published/${article.fields.slug}`}
+              />
+            ))}
+          </div>
         </aside>
       </div>
     </Layout>

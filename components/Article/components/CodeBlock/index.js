@@ -37,49 +37,45 @@ const CodeBlock = ({ text, codeLanguage }) => {
       language={codeLanguage || 'tsx'}
     >
       {({ style, tokens, getLineProps, getTokenProps }) => (
-        <pre
-          className={styles.outer}
-          style={{
-            ...style,
-          }}
-        >
-          <div className={styles.header_container}>
-            <div
-              className={styles.header_container__dot}
-              style={{
-                backgroundColor: '#FF5F56',
-              }}
-            />
-            <div
-              className={styles.header_container__dot}
-              style={{
-                backgroundColor: '#FFBD2E',
-              }}
-            />
-            <div
-              className={styles.header_container__dot}
-              style={{
-                backgroundColor: '#27C93F',
-              }}
-            />
-            <button
-              onClick={onCopyClick}
-              className={styles.header_container__button}
-            >
-              {!isCopied ? 'Copy clipboard' : 'Copied ✔'}
-            </button>
-          </div>
-          {tokens.map((line, i) => (
-            <div
-              key={i}
-              {...getLineProps({ line })}
-              style={{ overflow: 'auto' }}
-            >
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token })} />
-              ))}
+        <pre className={styles.container}>
+          <pre
+            className={styles.outer}
+            style={{
+              ...style,
+            }}
+          >
+            <div className={styles.header_container}>
+              <div
+                className={styles.header_container__dot}
+                style={{
+                  backgroundColor: '#FF5F56',
+                }}
+              />
+              <div
+                className={styles.header_container__dot}
+                style={{
+                  backgroundColor: '#FFBD2E',
+                }}
+              />
+              <div
+                className={styles.header_container__dot}
+                style={{
+                  backgroundColor: '#27C93F',
+                }}
+              />
             </div>
-          ))}
+
+            {tokens.map((line, i) => (
+              <div key={i} {...getLineProps({ line })}>
+                {line.map((token, key) => (
+                  <span key={key} {...getTokenProps({ token })} />
+                ))}
+              </div>
+            ))}
+          </pre>
+          <button onClick={onCopyClick} className={styles.copy__button}>
+            {!isCopied ? 'Copy clipboard' : 'Copied ✔'}
+          </button>
         </pre>
       )}
     </Highlight>

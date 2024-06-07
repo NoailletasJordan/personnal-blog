@@ -82,6 +82,21 @@ header {
   }
 }
 
+table {
+  tr {
+    td:first-child {
+      font-weight: 700;
+    }
+    td:not(:first-child) {
+      border: 1px solid #171717;
+    }
+    p {
+      text-align: center;
+      margin: 0.7rem 0 !important;
+    }
+  }
+}
+
 // rotating text
 .react-rotating-text-cursor {
   animation: blinking-cursor 0.8s cubic-bezier(0.68, 0.01, 0.01, 0.99) 0s
