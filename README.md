@@ -1,4 +1,4 @@
-# Next-Blog
+# InTech' Resting
 
 Blog suivant l'architecture **JAMstack**, développé avec **Nextjs** et
 **Contentful**.
