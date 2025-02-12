@@ -5,7 +5,7 @@ Blog suivant l'architecture **JAMstack**, développé avec **Nextjs** et
 
 SEO, images optimisées automatiquement, génération statique des assets.
 
-> **Deprecated**: This is the old version of project, kept for reference purposes only. For the latest version, please visit [the new project here]([URL](https://github.com/NoailletasJordan/intech-resting-presentation)).
+> **Deprecated**: This is the old version of project, kept for reference purposes only. For the latest version, please visit [the new project here](https://github.com/NoailletasJordan/intech-resting-presentation).
 
 ### Rapport Lighthouse
 
